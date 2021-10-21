@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detail subject
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <h2>{{ subject.name }} faniga oid kitoblar</h2>
+                {% for book in subject.book_set.all %}
+                    <div class="mt-5 d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>{{ book.name }}</h5>
+                            <p>Author: {{ book.author }}</p>
+                        </div>
+
+                    <div class="">
+                        <a href="{% url 'subject:delete_page_book' book.id %}" class="btn btn-danger btn-sm">Delete book</a>
+                        <a href="{% url 'subject:download' book.generated_name %}" class="btn btn-success btn-sm">Download</a>
+                    </div>
+
+                    </div>
+
+                {% endfor %}
+
+                <a href="{% url 'subject:create_book_page' subject.id %}" class="btn btn-success">Create book</a>
+                <a href="{% url 'subject:list' %}" class="btn btn-warning">Back</a>
+                <a href="{% url 'subject:update_subject_page' subject.id %}" class="btn btn-primary">Update Subject</a>
+                <a href="{% url 'subject:delete_page_subject' subject.id %}" class="btn btn-danger">Delete Subject</a>
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

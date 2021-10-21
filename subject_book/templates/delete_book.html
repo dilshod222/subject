@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Delete book
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="offset-2 col-8">
+                <form action="{% url 'subject:delete_book' book.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="alert alert-danger">Siz <strong>{{ book.name }}  </strong> kitobni o'chirmoqchimisiz?</div>
+                    <a href="{% url 'subject:list' %}" class="mt-2 btn btn-warning">Back</a>
+                    <input type="submit" value="Delete" class="btn btn-danger mt-2">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
