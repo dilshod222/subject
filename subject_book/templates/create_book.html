@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Create Subject
+{% endblock %}
+
+
+{% block content %}
+    <div class="conatiner">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h1>Siz {{ subject.name }} faniga kitob qo'shmoqdasiz</h1>
+                <form action="{% url 'subject:create_book' subject.id%}" enctype="multipart/form-data" method="post" class="form-control">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Book name</label>
+                        <input type="text" name="name" id="name" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Author</label>
+                        <input type="text" name="author" id="author" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">File</label>
+                        <input type="file" name="file" class="form-control">
+                    </div>
+
+
+                    <input type="submit" value="create book" class="btn btn-success mt-3">
+                    <a href="{% url 'subject:list' %}" class="btn btn-warning mt-3">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

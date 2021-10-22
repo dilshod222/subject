@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Update Subject
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+  <div class="row">
+      <div class="col-8 offset-2">
+            <h4>Update Subject</h4>
+ <form action="{% url 'subject:update_subject' %}" method="post">
+    {{ form.id }}
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.name.errors }}
+        <label class="form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label> <br>
+         {{ form.name }}
+    </div>
+
+     <input type="submit" class="btn btn-success" value="save"/>
+     <a href="{% url 'subject:list' %}" class="btn btn-warning">Back</a>
+
+
+      </div>
+  </div>
+  </div>
+
+{% endblock %}

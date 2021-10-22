@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Subject List
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+        {% for subject in subjects %}
+        <div class="border border-1 mt-3">
+            <a class="h1 m-3" href="{% url 'subject:get' subject.id %}">{{ subject.name }}</a>
+        </div>
+        {% endfor %}
+
+
+            <a href="{% url 'subject:create_subject_page' %}" class="btn btn-success mt-4">Create subject</a>
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
